@@ -218,7 +218,6 @@ do {
   if (animal[0] === 'm') {
     break;
   }
-  console.log('WHATSUP', animals[i]);
   countUntilM++;
   i++;
 } while (i < animals.length);
@@ -226,3 +225,199 @@ console.log('Count until M ', countUntilM);
 
 console.log(typeof animals);
 console.log(Array.isArray(animals));
+// 6
+/*
+Functions
+Part 1: Function Declarations
+Declare a function with no parameters that outputs something to the console.
+
+Declare a function named greet that logs "Hello, World!" to the console.
+*/
+function greet() {
+  console.log('Hello, World!');
+}
+/*
+Call the function.
+*/
+greet(); // Output: Hello, World!
+/*
+Declare a function with one parameter that returns something.
+Declare a function named square that takes a number as a parameter and returns its square.
+*/
+function square(number) {
+  return number * number;
+}
+/*
+
+Call the function with the argument 5, store the result in a variable, and output it to the console.
+*/
+let resultSquare = square(5);
+console.log(resultSquare); // Output: 25
+/*
+Declare a function with one parameter that performs a control flow with a switch statement and returns accordingly.
+
+Declare a function named getDayName that takes a number (0-6) as a parameter and returns the name of the day.
+Use a switch statement to determine the day name.
+Call the function with the argument 3, store the result in a variable, and output it to the console.
+*/
+function getDayName(dayNumber) {
+  let dayName;
+  switch (dayNumber) {
+    case 1:
+      dayName = 'Sunday';
+      break;
+    case 2:
+      dayName = 'Monday';
+      break;
+    case 3:
+      dayName = 'Tuesday';
+      break;
+    case 4:
+      dayName = 'Wednesday';
+      break;
+    case 5:
+      dayName = 'Thursday';
+      break;
+    case 6:
+      dayName = 'Friday';
+      break;
+    case 7:
+      dayName = 'Saturday';
+      break;
+    default:
+      dayName = 'Invalid day number';
+  }
+  return dayName;
+}
+let resultDayName = getDayName(3);
+console.log(resultDayName); // Output: Wednesday
+/*
+Part 2: Function Expressions
+Repeat the above steps using function expressions assigned to variables.
+Rewrite the greet function as a function expression assigned to a variable named greetExpression.
+Rewrite the square function as a function expression assigned to a variable named squareExpression.
+Rewrite the getDayName function as a function expression assigned to a variable named getDayNameExpression.
+Discussion:
+Discuss the difference between function declarations and function expressions.
+*/
+// 1. Function expression with no parameters
+const greetExpression = function () {
+  console.log('Hello again, World!');
+};
+const greetArrow = () => {
+  console.log('Hello again, World!');
+};
+// Call the function
+greetExpression(); // Output: Hello again, World!
+greetArrow();
+// 2. Function expression with one parameter
+const squareExpression = function (number) {
+  return number * number;
+};
+
+// Call the function and store the result
+let resultSquareExpression = squareExpression(5);
+
+// Output the result to the console
+console.log(resultSquareExpression); // Output: 25
+
+// 3. Function expression with one parameter and a switch statement
+const getDayNameExpression = function (dayNumber) {
+  let dayName;
+  switch (dayNumber) {
+    case 0:
+      dayName = 'Sunday';
+      break;
+    case 1:
+      dayName = 'Monday';
+      break;
+    case 2:
+      dayName = 'Tuesday';
+      break;
+    case 3:
+      dayName = 'Wednesday';
+      break;
+    case 4:
+      dayName = 'Thursday';
+      break;
+    case 5:
+      dayName = 'Friday';
+      break;
+    case 6:
+      dayName = 'Saturday';
+      break;
+    default:
+      dayName = 'Invalid day number';
+  }
+  return dayName;
+};
+
+// Call the function and store the result
+let resultDayNameExpression = getDayNameExpression(3);
+
+// Output the result to the console
+console.log(resultDayNameExpression); // Output: Wednesday
+/*
+Discussion:
+- Function declarations are hoisted to the top of their scope, meaning they can be called before they are declared in the code.
+- Function expressions are not hoisted, so they cannot be called before they are defined.
+*/
+
+//7
+/**
+ Global and Function Scope with var:
+
+Declare a global variable using var and log it.
+*/
+var myVar = 'Global with var';
+/*
+Inside a function, declare another var variable with the same name but different value and log it within the function.
+Call your function. 
+Log your global variable. Did it change? No! This is function scope!
+*/
+function test() {
+  // var, let and const behave very similar whtn it comes to function scope
+  var myVar = 'Function scoped with var';
+  console.log(myVar);
+}
+
+test();
+
+console.log(myVar);
+/*
+Block Scope with let and const:
+
+Inside a block (use an if statement with a condition of true), declare variables using let and const. Try redeclaring them within the same block to observe errors.
+Try to log them inside and outside the if statement. What happens?
+Redeclaration with var:
+Try to redeclare your original global variable with var within the if block, log it in and outside the statement. What happens?
+*/
+
+if (true) {
+  let myLetVar = 'something';
+  const myConstVar = 'something else';
+  var myVar = 're-declared';
+  // let myLetVar = 'something';
+  // const myConstVar = 'something else';
+  console.log(myLetVar);
+  console.log(myConstVar);
+  console.log(myVar);
+}
+// let and const are scoped to the blocks they are declared in
+// console.log(myLetVar);
+// console.log(myConstVar);
+console.log(myVar);
+/*
+Usage of const for Arrays and Objects:
+
+Declare an array and an object using const. Modify the contents of both and log their values before and after the changes.
+constis suggested for arrays and objects declaration since it's only the contents that change but not the reference!
+
+ */
+const myArray = [1, 2, 3];
+const myObj = { name: 'john' };
+console.log(myArray);
+myArray.push(4);
+console.log(myArray);
+myObj.age = 10;
+console.log(myObj);
